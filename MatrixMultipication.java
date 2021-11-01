@@ -1,9 +1,23 @@
 // Mehmet Akif Pinarci
 
+import java.util.Random;
+
 class MatrixMultipication{
 
     public static void main(String[] args){
         // Input matrices given by the professor.
+        Random r=new Random();
+        int n = 1024;
+        int[][] a=new int[n][n];
+        int[][] b=new int[n][n];
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                a[i][j]=r.nextInt(20);
+                b[i][j]=r.nextInt(20);
+            }
+        }
         int mat1[][] = { { 2, 0, -1, 6 },
                          { 3, 7, 8, 0 },
                          { -5, 1, 6, -2 },
@@ -27,17 +41,22 @@ class MatrixMultipication{
 
 
         // Calculation which is used for calculating the average run time of the algorithms.
-        long totalTime = 0;
-        for(int i = 0; i < 10; i++){
-            long startTime = System.currentTimeMillis();
-            for(int k = 0; k < 1000001; k++){
-                naiveDAQ(mat1, mat2);
-            }
-            long endTime = System.currentTimeMillis();
-            System.out.println(endTime - startTime);
-            totalTime += (endTime - startTime);
-        }
-        System.out.println((float)totalTime/10);
+        long startTime = System.currentTimeMillis();
+        // strassenMM(a, b);
+        // long endTime = System.currentTimeMillis();
+        // System.out.print("Strassen's Algorith: ");
+        // System.out.println(endTime - startTime);
+        // startTime = System.currentTimeMillis();
+        // naiveDAQ(a, b);
+        // endTime = System.currentTimeMillis();
+        // System.out.print("Naive Divide and Conquer: ");
+        // System.out.println(endTime - startTime);
+        // startTime = System.currentTimeMillis();
+        classicalMatrixMultipication(a, b);
+        long endTime = System.currentTimeMillis();
+        System.out.print("Classical Matrix Multiplications: ");
+        System.out.println(endTime - startTime);
+        
     }
 
 
